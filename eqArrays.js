@@ -7,11 +7,8 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(array1, array2) {
-  const newArray = array1.concat(array2);
-  const midIndex = Math.floor(newArray.length/2);
-  console.log(newArray);
-  for (let i = 0; i < midIndex; i++) {
-    if (newArray[i] !== newArray[midIndex + i]) {
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] !== array2[i]) {
       return false;
     }
   }
