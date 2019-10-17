@@ -16,11 +16,15 @@ const eqArrays = function(array1, array2) {
 };
 
 const eqObjects = function(object1, object2) {
-  if (Object.keys(object1).length !== Object.keys(object2).length) {
+  let objectKeys1 = Object.keys(object1).length;
+  let objectKeys2 = Object.keys(object2).length;
+  if (objectKeys1 !== objectKeys2) {
     return false;
   }
   for (let key of Object.keys(object1)) {
-    if (object1[key] !== object2[key]) {
+    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+      return eqArrays(object1[key], object2[key]);
+    } else if (object1[key] !== object2[key]) {
       return false;
     }
   }
